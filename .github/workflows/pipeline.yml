@@ -39,7 +39,7 @@ jobs:
           path: playwright-report/
           retention-days: 30
       - name: Trigger deployment
-        if: ${{ (contains((github.event.commits.*.message), "#skip") == false) }}
+        if: ${{ (contains((github.event.commits.*.message), "#skip")) }}
         # if: ${{ (github.event_name == 'push') && (contains(join(github.event.commits.*.message), "#skip") == false) }}
         run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
 
