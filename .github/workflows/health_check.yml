@@ -1,0 +1,20 @@
+name: Periodic Hello
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  health_check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello!"
+      - name: Check the deployed service URL
+        uses: jtalk/url-health-check-action@v5
+        with:
+          # Check the following URLs one by one sequentially
+          url: https://fs-pokedex-2y8h.onrender.com/health
+          follow-redirect: false # Optional, defaults 
+          max-attempts: 3 
+          retry-delay: 5s # Optional, only applicable 
