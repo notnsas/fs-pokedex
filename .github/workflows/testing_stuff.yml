@@ -24,5 +24,6 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: commit messages
         env:
-          COMMIT_MESSAGES: ${{ (join(github.event.commits.*.message)) }}
-        run: echo "$${{ (join(github.event.commits.*.message)) }}"
+          # COMMIT_MESSAGES: ${{ (join(github.event.commits.*.message)) }}
+          COMMIT_MESSAGES: ${{ (contains("hae a"), "hae") }}
+        run: echo "$COMMIT_MESSAGES"
