@@ -58,7 +58,7 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-          content: "Hey @bukan_hamumu_46891"
+          content: "Hey <@1379106025474621571>, the deployment was successful!"
           title: "deploy"
           description: "Build and deploy to GitHub Pages"
           color: 0x0000ff
@@ -76,7 +76,7 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-          content: "Hey @bukan_hamumu_46891"
+          content: "Hey <@1379106025474621571>, the deployment failed!"
           title: "deploy"
           description: |
             Build has failed, check the logs for details
