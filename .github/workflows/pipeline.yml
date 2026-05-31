@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  simple_deployment_pipeline:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -38,8 +38,13 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+  
+  deploy:
+    needs: [build_and_test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - name: Trigger deployment
-        # if: ${{ (contains((github.event.commits.*.message), '#skip')) }}
         if: ${{ (github.event_name == 'push') && (contains(join(github.event.commits.*.message), '#skip') == false) }}
         run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
         - uses: sarisia/actions-status-discord@v1
@@ -57,7 +62,7 @@ jobs:
           avatar_url: ${{ secrets.AVATAR_URL }}
 
   tag_release:
-    needs: [simple_deployment_pipeline]
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
