@@ -5,6 +5,14 @@ import stylisticJs from '@stylistic/eslint-plugin'
 export default [
   js.configs.recommended,
   {
+    files: ['**/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: { ...globals.node },
+      ecmaVersion: 'latest',
+    },
+  },
+  {
     files: ['**/*.js'],
     languageOptions: {
       sourceType: 'module',
