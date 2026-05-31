@@ -13,6 +13,6 @@ Start by running `npm install` inside the project folder
 `npm run start-prod` to run your production build
 
 ## Link
-The link of the app is : https://fs-pokedex-2y8h.onrender.com
+The link of the deployed app is : https://fs-pokedex-2y8h.onrender.com
 
-Click above link to go to the websites
+The app repository from the previous last two exercises (21 & 22) is : https://github.com/notnsas/bloglist
