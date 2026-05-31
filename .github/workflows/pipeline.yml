@@ -49,8 +49,31 @@ jobs:
           status: ${{ job.status }}
           content: "Hey <@316911818725392384>"
           title: "deploy"
-          description: "Build and deploy to GitHub Pages"
+          description: |
+            Build is successful, check the logs for details
+            Version `${{ github.event.release.tag_name }}`
+            Click [here](${{ github.event.release.html_url }}) to download!
+            Commit messages: `${{ join(github.event.commits.*.message) }}`
+            Commit hashes: `${{ join(github.event.commits.*.id) }}`
           color: 0x0000ff
+          url: "https://github.com/sarisia/actions-status-discord"
+          username: GitHub Actions
+          avatar_url: ${{ secrets.AVATAR_URL }}
+      - name: Notify Discord
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ failure() }}
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          content: "Hey <@316911818725392384>"
+          title: "deploy"
+          description: |
+            Build has failed, check the logs for details
+            Version `${{ github.event.release.tag_name }}`
+            Click [here](${{ github.event.release.html_url }}) to download!
+            Commit messages: `${{ join(github.event.commits.*.message) }}`
+            Commit hashes: `${{ join(github.event.commits.*.id) }}`
+          color: 0xff0000
           url: "https://github.com/sarisia/actions-status-discord"
           username: GitHub Actions
           avatar_url: ${{ secrets.AVATAR_URL }}
