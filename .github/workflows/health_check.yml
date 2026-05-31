@@ -1,9 +1,6 @@
 name: Periodic Hello
 
 on:
-  push:                # 1. Add this push trigger temporarily
-    branches:
-      - main
   workflow_dispatch:
   schedule:
     - cron: '*/15 * * * *'
