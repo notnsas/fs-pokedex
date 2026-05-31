@@ -15,4 +15,4 @@ Start by running `npm install` inside the project folder
 ## Link
 The link of the app is : https://fs-pokedex-2y8h.onrender.com
 
-Click above link to go to the websites
+Click above link to go to the website
